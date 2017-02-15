@@ -6,6 +6,31 @@ var element = document.getElementById('main-text');
 
 //Move image
 
+var button = document.getElementById('counter');
+ 
+button.onclick=function(){
+
+var request = new XMLHttpRequest();
+    request.onreadystatechange = function(){
+        if(request.readyState == XMLHttpRequest.DONE){
+            if(request.state === 200){
+                var counter = request.responseText;
+                var span = docoment.getElementById('count');
+                span.innerHtml = counter.toString();
+            }
+        }
+    }
+    request.open('GET','http://mohittihom.imad.hasura-app.io/counter',true);
+    request.send(null);
+};
+
+
+
+
+
+
+/*
+
 var img= document.getElementById('tihom');
 var marginLeft = 0;
 function moveRight(){
@@ -32,3 +57,4 @@ button.onclick=function(){
 }
 
 
+*/
